@@ -25,7 +25,7 @@ public class CalcActivity extends AppCompatActivity {
     private TextView tv_tip; // Поле для суммы чаевых
     private TextView tv_total; // Поле для итоговой суммы
     // Создание объекта калькулятор чаевых:
-    private Calc tCalc = new Calc();
+    private Calc tipCalc = new Calc();
 
     // Вызывается метод onCreate при создании активности
     @Override
@@ -54,8 +54,8 @@ public class CalcActivity extends AppCompatActivity {
         public void onTextChanged(@NonNull CharSequence s, int start, int before, int count) {
             amount = Double.parseDouble(s.toString());
             // Обновление полей с чаевыми и общей суммой в формате денежной величины
-            tv_tip.setText(currencyFormat.format(tCalc.calculateTip(amount,percent)));
-            tv_total.setText(currencyFormat.format(tCalc.calculateTotal(amount, percent)));
+            tv_tip.setText(currencyFormat.format(tipCalc.calculateTip(amount,percent)));
+            tv_total.setText(currencyFormat.format(tipCalc.calculateTotal(amount, percent)));
         }
         @Override
         public void afterTextChanged(Editable s) { }
@@ -72,8 +72,8 @@ public class CalcActivity extends AppCompatActivity {
             percent = progress / 100.0; // Назначение процента чаевых
             // Вычисление чаевых и общей суммы. Вывод их на экран.
             tv_percent.setText(percentFormat.format(percent));
-            tv_tip.setText(currencyFormat.format(tCalc.calculateTip(amount,percent)));
-            tv_total.setText(currencyFormat.format(tCalc.calculateTotal(amount, percent)));
+            tv_tip.setText(currencyFormat.format(tipCalc.calculateTip(amount,percent)));
+            tv_total.setText(currencyFormat.format(tipCalc.calculateTotal(amount, percent)));
         }
         @Override
         public void onStartTrackingTouch(SeekBar seekBar) { }
